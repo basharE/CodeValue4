@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AsyncDemo
@@ -11,22 +12,30 @@ namespace AsyncDemo
             InitializeComponent();                      
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            TheDelegate dDelegate = new TheDelegate(Delegates.CalcPrimes);
-
-            var firstNum = int.Parse(firstTextBox.Text);
-            var secondNum = int.Parse(secondTextBox.Text);
-
-            IAsyncResult result = dDelegate.BeginInvoke(firstNum, secondNum, null, null);
-
-            IEnumerable<int> returnResult = dDelegate.EndInvoke( result);
-
-
-            
-            foreach (var num in returnResult)
+        private async void  button1_Click(object sender, EventArgs e)
+        {        
+            var dDelegate = new PrimesCalculator(Delegates.CalcPrimes);
+            var returnResult = new AsyncCallback(ProcessInformation);
+            try
             {
-                listBox.Items.Add(num);
+                var firstNum = int.Parse(firstTextBox.Text);
+                var secondNum = int.Parse(secondTextBox.Text);
+                await Task.Run(() => dDelegate.BeginInvoke(firstNum, secondNum, returnResult, null));
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception.Message);
+            }                                
+        }
+
+        private void ProcessInformation(IAsyncResult resultInv)
+        {
+            var res = (AsyncResult) resultInv;
+            var asyncDelegate = (PrimesCalculator)res.AsyncDelegate;
+            var ourResult = asyncDelegate.EndInvoke(resultInv);
+            foreach (var num in ourResult)
+            {
+                Invoke((Action)(()=>listBox.Items.Add(num)));
             }
         }
     }

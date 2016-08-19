@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SyncDemo", "SyncDemo\SyncDemo.csproj", "{29AA4029-5009-43A2-8073-A8F373C4FE88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sync", "Sync\Sync.csproj", "{A039C3DF-9AC4-4596-ADB2-221357C7034A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{29AA4029-5009-43A2-8073-A8F373C4FE88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29AA4029-5009-43A2-8073-A8F373C4FE88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29AA4029-5009-43A2-8073-A8F373C4FE88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29AA4029-5009-43A2-8073-A8F373C4FE88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A039C3DF-9AC4-4596-ADB2-221357C7034A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A039C3DF-9AC4-4596-ADB2-221357C7034A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A039C3DF-9AC4-4596-ADB2-221357C7034A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A039C3DF-9AC4-4596-ADB2-221357C7034A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
