@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 
 namespace AsyncDemo
 {
+    //Good name
     public  delegate IEnumerable<int> PrimesCalculator(int firstArgument, int secondArgument);
+    // Why Static Class ??
     internal static class Delegates
     {
+        // why static?
         public static  IEnumerable<int> CalcPrimes(int first, int second)
         {
             var returnResult = new List<int>();
@@ -20,6 +23,7 @@ namespace AsyncDemo
             }
             return  returnResult;
         }
+        // why static?
         private static bool IsPrime(int num)
         {
             var result = true;

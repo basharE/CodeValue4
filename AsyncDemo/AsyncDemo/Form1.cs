@@ -18,6 +18,7 @@ namespace AsyncDemo
             var returnResult = new AsyncCallback(ProcessInformation);
             try
             {
+                // Use Try Parse next time
                 var firstNum = int.Parse(firstTextBox.Text);
                 var secondNum = int.Parse(secondTextBox.Text);
                 await Task.Run(() => dDelegate.BeginInvoke(firstNum, secondNum, returnResult, null));
@@ -30,11 +31,13 @@ namespace AsyncDemo
 
         private void ProcessInformation(IAsyncResult resultInv)
         {
+            // delete dirst 2 lines and hold your dekegate as member class
             var res = (AsyncResult) resultInv;
             var asyncDelegate = (PrimesCalculator)res.AsyncDelegate;
             var ourResult = asyncDelegate.EndInvoke(resultInv);
             foreach (var num in ourResult)
             {
+                // Invoke - synchronic, BeginInvoke - Asynchronic
                 Invoke((Action)(()=>listBox.Items.Add(num)));
             }
         }
